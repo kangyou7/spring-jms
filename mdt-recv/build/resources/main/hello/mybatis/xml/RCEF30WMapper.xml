@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hello.mybatis.mapper.RCEF30WMapper" >
+  <resultMap id="BaseResultMap" type="hello.mybatis.model.RCEF30W" >
+    <constructor >
+      <idArg column="WORK_DAY" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <idArg column="MDT_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <idArg column="NCELL_SEQ" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="NW_COLOR_CD" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BTS_COLOR_CD" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ARFCN_VAL" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="BAND_IND_VAL" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="RSSI_VAL" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    WORK_DAY, MDT_ID, NCELL_SEQ, NW_COLOR_CD, BTS_COLOR_CD, ARFCN_VAL, BAND_IND_VAL, 
+    RSSI_VAL
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="hello.mybatis.model.RCEF30WExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_TRCEF30Y
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_TRCEF30Y
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+      and MDT_ID = #{mdtId,jdbcType=VARCHAR}
+      and NCELL_SEQ = #{ncellSeq,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from TB_TRCEF30Y
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+      and MDT_ID = #{mdtId,jdbcType=VARCHAR}
+      and NCELL_SEQ = #{ncellSeq,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="hello.mybatis.model.RCEF30WExample" >
+    delete from TB_TRCEF30Y
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="hello.mybatis.model.RCEF30W" >
+    insert into TB_TRCEF30Y (WORK_DAY, MDT_ID, NCELL_SEQ, 
+      NW_COLOR_CD, BTS_COLOR_CD, ARFCN_VAL, 
+      BAND_IND_VAL, RSSI_VAL)
+    values (#{workDay,jdbcType=VARCHAR}, #{mdtId,jdbcType=VARCHAR}, #{ncellSeq,jdbcType=DECIMAL}, 
+      #{nwColorCd,jdbcType=VARCHAR}, #{btsColorCd,jdbcType=VARCHAR}, #{arfcnVal,jdbcType=DECIMAL}, 
+      #{bandIndVal,jdbcType=DECIMAL}, #{rssiVal,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="hello.mybatis.model.RCEF30W" >
+    insert into TB_TRCEF30Y
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="workDay != null" >
+        WORK_DAY,
+      </if>
+      <if test="mdtId != null" >
+        MDT_ID,
+      </if>
+      <if test="ncellSeq != null" >
+        NCELL_SEQ,
+      </if>
+      <if test="nwColorCd != null" >
+        NW_COLOR_CD,
+      </if>
+      <if test="btsColorCd != null" >
+        BTS_COLOR_CD,
+      </if>
+      <if test="arfcnVal != null" >
+        ARFCN_VAL,
+      </if>
+      <if test="bandIndVal != null" >
+        BAND_IND_VAL,
+      </if>
+      <if test="rssiVal != null" >
+        RSSI_VAL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="workDay != null" >
+        #{workDay,jdbcType=VARCHAR},
+      </if>
+      <if test="mdtId != null" >
+        #{mdtId,jdbcType=VARCHAR},
+      </if>
+      <if test="ncellSeq != null" >
+        #{ncellSeq,jdbcType=DECIMAL},
+      </if>
+      <if test="nwColorCd != null" >
+        #{nwColorCd,jdbcType=VARCHAR},
+      </if>
+      <if test="btsColorCd != null" >
+        #{btsColorCd,jdbcType=VARCHAR},
+      </if>
+      <if test="arfcnVal != null" >
+        #{arfcnVal,jdbcType=DECIMAL},
+      </if>
+      <if test="bandIndVal != null" >
+        #{bandIndVal,jdbcType=DECIMAL},
+      </if>
+      <if test="rssiVal != null" >
+        #{rssiVal,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="hello.mybatis.model.RCEF30WExample" resultType="java.lang.Integer" >
+    select count(*) from TB_TRCEF30Y
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update TB_TRCEF30Y
+    <set >
+      <if test="record.workDay != null" >
+        WORK_DAY = #{record.workDay,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mdtId != null" >
+        MDT_ID = #{record.mdtId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ncellSeq != null" >
+        NCELL_SEQ = #{record.ncellSeq,jdbcType=DECIMAL},
+      </if>
+      <if test="record.nwColorCd != null" >
+        NW_COLOR_CD = #{record.nwColorCd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.btsColorCd != null" >
+        BTS_COLOR_CD = #{record.btsColorCd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.arfcnVal != null" >
+        ARFCN_VAL = #{record.arfcnVal,jdbcType=DECIMAL},
+      </if>
+      <if test="record.bandIndVal != null" >
+        BAND_IND_VAL = #{record.bandIndVal,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rssiVal != null" >
+        RSSI_VAL = #{record.rssiVal,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update TB_TRCEF30Y
+    set WORK_DAY = #{record.workDay,jdbcType=VARCHAR},
+      MDT_ID = #{record.mdtId,jdbcType=VARCHAR},
+      NCELL_SEQ = #{record.ncellSeq,jdbcType=DECIMAL},
+      NW_COLOR_CD = #{record.nwColorCd,jdbcType=VARCHAR},
+      BTS_COLOR_CD = #{record.btsColorCd,jdbcType=VARCHAR},
+      ARFCN_VAL = #{record.arfcnVal,jdbcType=DECIMAL},
+      BAND_IND_VAL = #{record.bandIndVal,jdbcType=DECIMAL},
+      RSSI_VAL = #{record.rssiVal,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="hello.mybatis.model.RCEF30W" >
+    update TB_TRCEF30Y
+    <set >
+      <if test="nwColorCd != null" >
+        NW_COLOR_CD = #{nwColorCd,jdbcType=VARCHAR},
+      </if>
+      <if test="btsColorCd != null" >
+        BTS_COLOR_CD = #{btsColorCd,jdbcType=VARCHAR},
+      </if>
+      <if test="arfcnVal != null" >
+        ARFCN_VAL = #{arfcnVal,jdbcType=DECIMAL},
+      </if>
+      <if test="bandIndVal != null" >
+        BAND_IND_VAL = #{bandIndVal,jdbcType=DECIMAL},
+      </if>
+      <if test="rssiVal != null" >
+        RSSI_VAL = #{rssiVal,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+      and MDT_ID = #{mdtId,jdbcType=VARCHAR}
+      and NCELL_SEQ = #{ncellSeq,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="hello.mybatis.model.RCEF30W" >
+    update TB_TRCEF30Y
+    set NW_COLOR_CD = #{nwColorCd,jdbcType=VARCHAR},
+      BTS_COLOR_CD = #{btsColorCd,jdbcType=VARCHAR},
+      ARFCN_VAL = #{arfcnVal,jdbcType=DECIMAL},
+      BAND_IND_VAL = #{bandIndVal,jdbcType=DECIMAL},
+      RSSI_VAL = #{rssiVal,jdbcType=DECIMAL}
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+      and MDT_ID = #{mdtId,jdbcType=VARCHAR}
+      and NCELL_SEQ = #{ncellSeq,jdbcType=DECIMAL}
+  </update>
+</mapper>

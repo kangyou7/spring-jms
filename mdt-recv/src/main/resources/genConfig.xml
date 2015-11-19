@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<classPathEntry location="c:\ojdbc6.jar" />
+
+	<context id="context" targetRuntime="MyBatis3">
+
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+			connectionURL="jdbc:oracle:thin:@//172.30.13.67:1528/TWNPS" userId="locu"
+			password="dprtkepdlxj" />
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="true" />
+		</javaTypeResolver>
+
+
+
+		<javaModelGenerator targetPackage="hello.mybatis.model"
+			targetProject="mdt-recv">
+			<property name="constructorBased" value="true" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="hello.mybatis.xml"
+			targetProject="mdt-recv\src\main\resources" />
+
+		<javaClientGenerator targetPackage="hello.mybatis.mapper"
+			targetProject="mdt-recv" type="XMLMAPPER" />
+
+		<!-- 테이블선언 -->
+		<!-- 예제 <table schema="locu" tableName="people" modelType="flat" /> -->
+		<table schema="locu" tableName="TB_TITRF01W" domainObjectName="ITRF01W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TITRF10W" domainObjectName="ITRF10W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TITEF01W" domainObjectName="ITEF01W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TITEF10W" domainObjectName="ITEF10W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TLOGD01W" domainObjectName="LOGD01W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TLOGD10W" domainObjectName="LOGD10W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TLOGD11W" domainObjectName="LOGD11W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TLOGD20W" domainObjectName="LOGD20W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TLOGD21W" domainObjectName="LOGD21W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TLOGD30W" domainObjectName="LOGD30W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TPCTR01W" domainObjectName="PCTR01W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TCON001C" domainObjectName="CON001C"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TLOG001L" domainObjectName="LOG001L"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TLOG002L" domainObjectName="LOG002L"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TLOG003L" domainObjectName="LOG003L"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TRLFR01W" domainObjectName="RLFR01W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TRLFR10W" domainObjectName="RLFR10W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TRLFR11W" domainObjectName="RLFR11W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TRLFR20W" domainObjectName="RLFR20W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TRLFR21W" domainObjectName="RLFR21W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TRLFR30W" domainObjectName="RLFR30W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TRCEFR1W" domainObjectName="RCEF01W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TRCEF10W" domainObjectName="RCEF10W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TRCEF11W" domainObjectName="RCEF11W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TRCEF20W" domainObjectName="RCEF20W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TRCEF21W" domainObjectName="RCEF21W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TRCEF30W" domainObjectName="RCEF30W"
+			modelType="flat" />
+		<table schema="locu" tableName="TB_TM1A201W" domainObjectName="M1A201W"
+			modelType="flat" />
+
+
+	</context>
+</generatorConfiguration>

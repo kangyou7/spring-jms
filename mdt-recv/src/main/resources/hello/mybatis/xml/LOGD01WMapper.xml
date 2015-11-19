@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hello.mybatis.mapper.LOGD01WMapper" >
+  <resultMap id="BaseResultMap" type="hello.mybatis.model.LOGD01W" >
+    <constructor >
+      <idArg column="WORK_DAY" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <idArg column="MDT_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ENB_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CELL_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CAL_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="MEAS_TMST" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SCELL_RSRP_VAL" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="SCELL_RSRQ_VAL" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="EUTRAN_NCELL_INFO_YN" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="EUTRAN_NCELL_CARR_FREQ_CNT" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="UTRAN_NCELL_INFO_YN" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="UTRAN_NCELL_CARR_FREQ_CNT" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="GERAN_NCELL_INFO_YN" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="GERAN_NCELL_CNT" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="TRC_REF_YN" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="USER_PLMN_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="TRC_PLMN_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="TRC_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="TRSR_VAL" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="LOC_INFO_YN" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="LAT_SGN_VAL" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="LAT_VAL" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="LOT_VAL" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="ALTITUDE_SGN_VAL" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="ALTITUDE_HGHT" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="UNCERTY_VAL" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    WORK_DAY, MDT_ID, ENB_ID, CELL_ID, CAL_ID, MEAS_TMST, SCELL_RSRP_VAL, SCELL_RSRQ_VAL, 
+    EUTRAN_NCELL_INFO_YN, EUTRAN_NCELL_CARR_FREQ_CNT, UTRAN_NCELL_INFO_YN, UTRAN_NCELL_CARR_FREQ_CNT, 
+    GERAN_NCELL_INFO_YN, GERAN_NCELL_CNT, TRC_REF_YN, USER_PLMN_ID, TRC_PLMN_ID, TRC_ID, 
+    TRSR_VAL, LOC_INFO_YN, LAT_SGN_VAL, LAT_VAL, LOT_VAL, ALTITUDE_SGN_VAL, ALTITUDE_HGHT, 
+    UNCERTY_VAL
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="hello.mybatis.model.LOGD01WExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_TLOGD01Y
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_TLOGD01Y
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+      and MDT_ID = #{mdtId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from TB_TLOGD01Y
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+      and MDT_ID = #{mdtId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="hello.mybatis.model.LOGD01WExample" >
+    delete from TB_TLOGD01Y
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="hello.mybatis.model.LOGD01W" >
+    insert into TB_TLOGD01Y (WORK_DAY, MDT_ID, ENB_ID, 
+      CELL_ID, CAL_ID, MEAS_TMST, 
+      SCELL_RSRP_VAL, SCELL_RSRQ_VAL, EUTRAN_NCELL_INFO_YN, 
+      EUTRAN_NCELL_CARR_FREQ_CNT, UTRAN_NCELL_INFO_YN, 
+      UTRAN_NCELL_CARR_FREQ_CNT, GERAN_NCELL_INFO_YN, 
+      GERAN_NCELL_CNT, TRC_REF_YN, USER_PLMN_ID, 
+      TRC_PLMN_ID, TRC_ID, TRSR_VAL, 
+      LOC_INFO_YN, LAT_SGN_VAL, LAT_VAL, 
+      LOT_VAL, ALTITUDE_SGN_VAL, ALTITUDE_HGHT, 
+      UNCERTY_VAL)
+    values (#{workDay,jdbcType=VARCHAR}, #{mdtId,jdbcType=VARCHAR}, #{enbId,jdbcType=VARCHAR}, 
+      #{cellId,jdbcType=VARCHAR}, #{calId,jdbcType=VARCHAR}, #{measTmst,jdbcType=VARCHAR}, 
+      #{scellRsrpVal,jdbcType=DECIMAL}, #{scellRsrqVal,jdbcType=DECIMAL}, #{eutranNcellInfoYn,jdbcType=VARCHAR}, 
+      #{eutranNcellCarrFreqCnt,jdbcType=DECIMAL}, #{utranNcellInfoYn,jdbcType=VARCHAR}, 
+      #{utranNcellCarrFreqCnt,jdbcType=DECIMAL}, #{geranNcellInfoYn,jdbcType=VARCHAR}, 
+      #{geranNcellCnt,jdbcType=DECIMAL}, #{trcRefYn,jdbcType=VARCHAR}, #{userPlmnId,jdbcType=VARCHAR}, 
+      #{trcPlmnId,jdbcType=VARCHAR}, #{trcId,jdbcType=VARCHAR}, #{trsrVal,jdbcType=DECIMAL}, 
+      #{locInfoYn,jdbcType=VARCHAR}, #{latSgnVal,jdbcType=DECIMAL}, #{latVal,jdbcType=DECIMAL}, 
+      #{lotVal,jdbcType=DECIMAL}, #{altitudeSgnVal,jdbcType=DECIMAL}, #{altitudeHght,jdbcType=DECIMAL}, 
+      #{uncertyVal,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="hello.mybatis.model.LOGD01W" >
+    insert into TB_TLOGD01Y
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="workDay != null" >
+        WORK_DAY,
+      </if>
+      <if test="mdtId != null" >
+        MDT_ID,
+      </if>
+      <if test="enbId != null" >
+        ENB_ID,
+      </if>
+      <if test="cellId != null" >
+        CELL_ID,
+      </if>
+      <if test="calId != null" >
+        CAL_ID,
+      </if>
+      <if test="measTmst != null" >
+        MEAS_TMST,
+      </if>
+      <if test="scellRsrpVal != null" >
+        SCELL_RSRP_VAL,
+      </if>
+      <if test="scellRsrqVal != null" >
+        SCELL_RSRQ_VAL,
+      </if>
+      <if test="eutranNcellInfoYn != null" >
+        EUTRAN_NCELL_INFO_YN,
+      </if>
+      <if test="eutranNcellCarrFreqCnt != null" >
+        EUTRAN_NCELL_CARR_FREQ_CNT,
+      </if>
+      <if test="utranNcellInfoYn != null" >
+        UTRAN_NCELL_INFO_YN,
+      </if>
+      <if test="utranNcellCarrFreqCnt != null" >
+        UTRAN_NCELL_CARR_FREQ_CNT,
+      </if>
+      <if test="geranNcellInfoYn != null" >
+        GERAN_NCELL_INFO_YN,
+      </if>
+      <if test="geranNcellCnt != null" >
+        GERAN_NCELL_CNT,
+      </if>
+      <if test="trcRefYn != null" >
+        TRC_REF_YN,
+      </if>
+      <if test="userPlmnId != null" >
+        USER_PLMN_ID,
+      </if>
+      <if test="trcPlmnId != null" >
+        TRC_PLMN_ID,
+      </if>
+      <if test="trcId != null" >
+        TRC_ID,
+      </if>
+      <if test="trsrVal != null" >
+        TRSR_VAL,
+      </if>
+      <if test="locInfoYn != null" >
+        LOC_INFO_YN,
+      </if>
+      <if test="latSgnVal != null" >
+        LAT_SGN_VAL,
+      </if>
+      <if test="latVal != null" >
+        LAT_VAL,
+      </if>
+      <if test="lotVal != null" >
+        LOT_VAL,
+      </if>
+      <if test="altitudeSgnVal != null" >
+        ALTITUDE_SGN_VAL,
+      </if>
+      <if test="altitudeHght != null" >
+        ALTITUDE_HGHT,
+      </if>
+      <if test="uncertyVal != null" >
+        UNCERTY_VAL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="workDay != null" >
+        #{workDay,jdbcType=VARCHAR},
+      </if>
+      <if test="mdtId != null" >
+        #{mdtId,jdbcType=VARCHAR},
+      </if>
+      <if test="enbId != null" >
+        #{enbId,jdbcType=VARCHAR},
+      </if>
+      <if test="cellId != null" >
+        #{cellId,jdbcType=VARCHAR},
+      </if>
+      <if test="calId != null" >
+        #{calId,jdbcType=VARCHAR},
+      </if>
+      <if test="measTmst != null" >
+        #{measTmst,jdbcType=VARCHAR},
+      </if>
+      <if test="scellRsrpVal != null" >
+        #{scellRsrpVal,jdbcType=DECIMAL},
+      </if>
+      <if test="scellRsrqVal != null" >
+        #{scellRsrqVal,jdbcType=DECIMAL},
+      </if>
+      <if test="eutranNcellInfoYn != null" >
+        #{eutranNcellInfoYn,jdbcType=VARCHAR},
+      </if>
+      <if test="eutranNcellCarrFreqCnt != null" >
+        #{eutranNcellCarrFreqCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="utranNcellInfoYn != null" >
+        #{utranNcellInfoYn,jdbcType=VARCHAR},
+      </if>
+      <if test="utranNcellCarrFreqCnt != null" >
+        #{utranNcellCarrFreqCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="geranNcellInfoYn != null" >
+        #{geranNcellInfoYn,jdbcType=VARCHAR},
+      </if>
+      <if test="geranNcellCnt != null" >
+        #{geranNcellCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="trcRefYn != null" >
+        #{trcRefYn,jdbcType=VARCHAR},
+      </if>
+      <if test="userPlmnId != null" >
+        #{userPlmnId,jdbcType=VARCHAR},
+      </if>
+      <if test="trcPlmnId != null" >
+        #{trcPlmnId,jdbcType=VARCHAR},
+      </if>
+      <if test="trcId != null" >
+        #{trcId,jdbcType=VARCHAR},
+      </if>
+      <if test="trsrVal != null" >
+        #{trsrVal,jdbcType=DECIMAL},
+      </if>
+      <if test="locInfoYn != null" >
+        #{locInfoYn,jdbcType=VARCHAR},
+      </if>
+      <if test="latSgnVal != null" >
+        #{latSgnVal,jdbcType=DECIMAL},
+      </if>
+      <if test="latVal != null" >
+        #{latVal,jdbcType=DECIMAL},
+      </if>
+      <if test="lotVal != null" >
+        #{lotVal,jdbcType=DECIMAL},
+      </if>
+      <if test="altitudeSgnVal != null" >
+        #{altitudeSgnVal,jdbcType=DECIMAL},
+      </if>
+      <if test="altitudeHght != null" >
+        #{altitudeHght,jdbcType=DECIMAL},
+      </if>
+      <if test="uncertyVal != null" >
+        #{uncertyVal,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="hello.mybatis.model.LOGD01WExample" resultType="java.lang.Integer" >
+    select count(*) from TB_TLOGD01Y
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update TB_TLOGD01Y
+    <set >
+      <if test="record.workDay != null" >
+        WORK_DAY = #{record.workDay,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mdtId != null" >
+        MDT_ID = #{record.mdtId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enbId != null" >
+        ENB_ID = #{record.enbId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cellId != null" >
+        CELL_ID = #{record.cellId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.calId != null" >
+        CAL_ID = #{record.calId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.measTmst != null" >
+        MEAS_TMST = #{record.measTmst,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scellRsrpVal != null" >
+        SCELL_RSRP_VAL = #{record.scellRsrpVal,jdbcType=DECIMAL},
+      </if>
+      <if test="record.scellRsrqVal != null" >
+        SCELL_RSRQ_VAL = #{record.scellRsrqVal,jdbcType=DECIMAL},
+      </if>
+      <if test="record.eutranNcellInfoYn != null" >
+        EUTRAN_NCELL_INFO_YN = #{record.eutranNcellInfoYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eutranNcellCarrFreqCnt != null" >
+        EUTRAN_NCELL_CARR_FREQ_CNT = #{record.eutranNcellCarrFreqCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.utranNcellInfoYn != null" >
+        UTRAN_NCELL_INFO_YN = #{record.utranNcellInfoYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.utranNcellCarrFreqCnt != null" >
+        UTRAN_NCELL_CARR_FREQ_CNT = #{record.utranNcellCarrFreqCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.geranNcellInfoYn != null" >
+        GERAN_NCELL_INFO_YN = #{record.geranNcellInfoYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.geranNcellCnt != null" >
+        GERAN_NCELL_CNT = #{record.geranNcellCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.trcRefYn != null" >
+        TRC_REF_YN = #{record.trcRefYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userPlmnId != null" >
+        USER_PLMN_ID = #{record.userPlmnId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trcPlmnId != null" >
+        TRC_PLMN_ID = #{record.trcPlmnId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trcId != null" >
+        TRC_ID = #{record.trcId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trsrVal != null" >
+        TRSR_VAL = #{record.trsrVal,jdbcType=DECIMAL},
+      </if>
+      <if test="record.locInfoYn != null" >
+        LOC_INFO_YN = #{record.locInfoYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.latSgnVal != null" >
+        LAT_SGN_VAL = #{record.latSgnVal,jdbcType=DECIMAL},
+      </if>
+      <if test="record.latVal != null" >
+        LAT_VAL = #{record.latVal,jdbcType=DECIMAL},
+      </if>
+      <if test="record.lotVal != null" >
+        LOT_VAL = #{record.lotVal,jdbcType=DECIMAL},
+      </if>
+      <if test="record.altitudeSgnVal != null" >
+        ALTITUDE_SGN_VAL = #{record.altitudeSgnVal,jdbcType=DECIMAL},
+      </if>
+      <if test="record.altitudeHght != null" >
+        ALTITUDE_HGHT = #{record.altitudeHght,jdbcType=DECIMAL},
+      </if>
+      <if test="record.uncertyVal != null" >
+        UNCERTY_VAL = #{record.uncertyVal,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update TB_TLOGD01Y
+    set WORK_DAY = #{record.workDay,jdbcType=VARCHAR},
+      MDT_ID = #{record.mdtId,jdbcType=VARCHAR},
+      ENB_ID = #{record.enbId,jdbcType=VARCHAR},
+      CELL_ID = #{record.cellId,jdbcType=VARCHAR},
+      CAL_ID = #{record.calId,jdbcType=VARCHAR},
+      MEAS_TMST = #{record.measTmst,jdbcType=VARCHAR},
+      SCELL_RSRP_VAL = #{record.scellRsrpVal,jdbcType=DECIMAL},
+      SCELL_RSRQ_VAL = #{record.scellRsrqVal,jdbcType=DECIMAL},
+      EUTRAN_NCELL_INFO_YN = #{record.eutranNcellInfoYn,jdbcType=VARCHAR},
+      EUTRAN_NCELL_CARR_FREQ_CNT = #{record.eutranNcellCarrFreqCnt,jdbcType=DECIMAL},
+      UTRAN_NCELL_INFO_YN = #{record.utranNcellInfoYn,jdbcType=VARCHAR},
+      UTRAN_NCELL_CARR_FREQ_CNT = #{record.utranNcellCarrFreqCnt,jdbcType=DECIMAL},
+      GERAN_NCELL_INFO_YN = #{record.geranNcellInfoYn,jdbcType=VARCHAR},
+      GERAN_NCELL_CNT = #{record.geranNcellCnt,jdbcType=DECIMAL},
+      TRC_REF_YN = #{record.trcRefYn,jdbcType=VARCHAR},
+      USER_PLMN_ID = #{record.userPlmnId,jdbcType=VARCHAR},
+      TRC_PLMN_ID = #{record.trcPlmnId,jdbcType=VARCHAR},
+      TRC_ID = #{record.trcId,jdbcType=VARCHAR},
+      TRSR_VAL = #{record.trsrVal,jdbcType=DECIMAL},
+      LOC_INFO_YN = #{record.locInfoYn,jdbcType=VARCHAR},
+      LAT_SGN_VAL = #{record.latSgnVal,jdbcType=DECIMAL},
+      LAT_VAL = #{record.latVal,jdbcType=DECIMAL},
+      LOT_VAL = #{record.lotVal,jdbcType=DECIMAL},
+      ALTITUDE_SGN_VAL = #{record.altitudeSgnVal,jdbcType=DECIMAL},
+      ALTITUDE_HGHT = #{record.altitudeHght,jdbcType=DECIMAL},
+      UNCERTY_VAL = #{record.uncertyVal,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="hello.mybatis.model.LOGD01W" >
+    update TB_TLOGD01Y
+    <set >
+      <if test="enbId != null" >
+        ENB_ID = #{enbId,jdbcType=VARCHAR},
+      </if>
+      <if test="cellId != null" >
+        CELL_ID = #{cellId,jdbcType=VARCHAR},
+      </if>
+      <if test="calId != null" >
+        CAL_ID = #{calId,jdbcType=VARCHAR},
+      </if>
+      <if test="measTmst != null" >
+        MEAS_TMST = #{measTmst,jdbcType=VARCHAR},
+      </if>
+      <if test="scellRsrpVal != null" >
+        SCELL_RSRP_VAL = #{scellRsrpVal,jdbcType=DECIMAL},
+      </if>
+      <if test="scellRsrqVal != null" >
+        SCELL_RSRQ_VAL = #{scellRsrqVal,jdbcType=DECIMAL},
+      </if>
+      <if test="eutranNcellInfoYn != null" >
+        EUTRAN_NCELL_INFO_YN = #{eutranNcellInfoYn,jdbcType=VARCHAR},
+      </if>
+      <if test="eutranNcellCarrFreqCnt != null" >
+        EUTRAN_NCELL_CARR_FREQ_CNT = #{eutranNcellCarrFreqCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="utranNcellInfoYn != null" >
+        UTRAN_NCELL_INFO_YN = #{utranNcellInfoYn,jdbcType=VARCHAR},
+      </if>
+      <if test="utranNcellCarrFreqCnt != null" >
+        UTRAN_NCELL_CARR_FREQ_CNT = #{utranNcellCarrFreqCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="geranNcellInfoYn != null" >
+        GERAN_NCELL_INFO_YN = #{geranNcellInfoYn,jdbcType=VARCHAR},
+      </if>
+      <if test="geranNcellCnt != null" >
+        GERAN_NCELL_CNT = #{geranNcellCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="trcRefYn != null" >
+        TRC_REF_YN = #{trcRefYn,jdbcType=VARCHAR},
+      </if>
+      <if test="userPlmnId != null" >
+        USER_PLMN_ID = #{userPlmnId,jdbcType=VARCHAR},
+      </if>
+      <if test="trcPlmnId != null" >
+        TRC_PLMN_ID = #{trcPlmnId,jdbcType=VARCHAR},
+      </if>
+      <if test="trcId != null" >
+        TRC_ID = #{trcId,jdbcType=VARCHAR},
+      </if>
+      <if test="trsrVal != null" >
+        TRSR_VAL = #{trsrVal,jdbcType=DECIMAL},
+      </if>
+      <if test="locInfoYn != null" >
+        LOC_INFO_YN = #{locInfoYn,jdbcType=VARCHAR},
+      </if>
+      <if test="latSgnVal != null" >
+        LAT_SGN_VAL = #{latSgnVal,jdbcType=DECIMAL},
+      </if>
+      <if test="latVal != null" >
+        LAT_VAL = #{latVal,jdbcType=DECIMAL},
+      </if>
+      <if test="lotVal != null" >
+        LOT_VAL = #{lotVal,jdbcType=DECIMAL},
+      </if>
+      <if test="altitudeSgnVal != null" >
+        ALTITUDE_SGN_VAL = #{altitudeSgnVal,jdbcType=DECIMAL},
+      </if>
+      <if test="altitudeHght != null" >
+        ALTITUDE_HGHT = #{altitudeHght,jdbcType=DECIMAL},
+      </if>
+      <if test="uncertyVal != null" >
+        UNCERTY_VAL = #{uncertyVal,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+      and MDT_ID = #{mdtId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="hello.mybatis.model.LOGD01W" >
+    update TB_TLOGD01Y
+    set ENB_ID = #{enbId,jdbcType=VARCHAR},
+      CELL_ID = #{cellId,jdbcType=VARCHAR},
+      CAL_ID = #{calId,jdbcType=VARCHAR},
+      MEAS_TMST = #{measTmst,jdbcType=VARCHAR},
+      SCELL_RSRP_VAL = #{scellRsrpVal,jdbcType=DECIMAL},
+      SCELL_RSRQ_VAL = #{scellRsrqVal,jdbcType=DECIMAL},
+      EUTRAN_NCELL_INFO_YN = #{eutranNcellInfoYn,jdbcType=VARCHAR},
+      EUTRAN_NCELL_CARR_FREQ_CNT = #{eutranNcellCarrFreqCnt,jdbcType=DECIMAL},
+      UTRAN_NCELL_INFO_YN = #{utranNcellInfoYn,jdbcType=VARCHAR},
+      UTRAN_NCELL_CARR_FREQ_CNT = #{utranNcellCarrFreqCnt,jdbcType=DECIMAL},
+      GERAN_NCELL_INFO_YN = #{geranNcellInfoYn,jdbcType=VARCHAR},
+      GERAN_NCELL_CNT = #{geranNcellCnt,jdbcType=DECIMAL},
+      TRC_REF_YN = #{trcRefYn,jdbcType=VARCHAR},
+      USER_PLMN_ID = #{userPlmnId,jdbcType=VARCHAR},
+      TRC_PLMN_ID = #{trcPlmnId,jdbcType=VARCHAR},
+      TRC_ID = #{trcId,jdbcType=VARCHAR},
+      TRSR_VAL = #{trsrVal,jdbcType=DECIMAL},
+      LOC_INFO_YN = #{locInfoYn,jdbcType=VARCHAR},
+      LAT_SGN_VAL = #{latSgnVal,jdbcType=DECIMAL},
+      LAT_VAL = #{latVal,jdbcType=DECIMAL},
+      LOT_VAL = #{lotVal,jdbcType=DECIMAL},
+      ALTITUDE_SGN_VAL = #{altitudeSgnVal,jdbcType=DECIMAL},
+      ALTITUDE_HGHT = #{altitudeHght,jdbcType=DECIMAL},
+      UNCERTY_VAL = #{uncertyVal,jdbcType=DECIMAL}
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+      and MDT_ID = #{mdtId,jdbcType=VARCHAR}
+  </update>
+</mapper>

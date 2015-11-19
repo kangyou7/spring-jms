@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hello.mybatis.mapper.LOG003LMapper" >
+  <resultMap id="BaseResultMap" type="hello.mybatis.model.LOG003L" >
+    <constructor >
+      <idArg column="WORK_DAY" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PGM_NM" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ERR_CONTS" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="DEFT_GBN_CD" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SMS_YN" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SMS_MSG_CONTS" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    WORK_DAY, PGM_NM, ERR_CONTS, DEFT_GBN_CD, SMS_YN, SMS_MSG_CONTS
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="hello.mybatis.model.LOG003LExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_TLOG003L
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_TLOG003L
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_TLOG003L
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="hello.mybatis.model.LOG003LExample" >
+    delete from TB_TLOG003L
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="hello.mybatis.model.LOG003L" >
+    insert into TB_TLOG003L (WORK_DAY, PGM_NM, ERR_CONTS, 
+      DEFT_GBN_CD, SMS_YN, SMS_MSG_CONTS
+      )
+    values (#{workDay,jdbcType=VARCHAR}, #{pgmNm,jdbcType=VARCHAR}, #{errConts,jdbcType=VARCHAR}, 
+      #{deftGbnCd,jdbcType=VARCHAR}, #{smsYn,jdbcType=VARCHAR}, #{smsMsgConts,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="hello.mybatis.model.LOG003L" >
+    insert into TB_TLOG003L
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="workDay != null" >
+        WORK_DAY,
+      </if>
+      <if test="pgmNm != null" >
+        PGM_NM,
+      </if>
+      <if test="errConts != null" >
+        ERR_CONTS,
+      </if>
+      <if test="deftGbnCd != null" >
+        DEFT_GBN_CD,
+      </if>
+      <if test="smsYn != null" >
+        SMS_YN,
+      </if>
+      <if test="smsMsgConts != null" >
+        SMS_MSG_CONTS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="workDay != null" >
+        #{workDay,jdbcType=VARCHAR},
+      </if>
+      <if test="pgmNm != null" >
+        #{pgmNm,jdbcType=VARCHAR},
+      </if>
+      <if test="errConts != null" >
+        #{errConts,jdbcType=VARCHAR},
+      </if>
+      <if test="deftGbnCd != null" >
+        #{deftGbnCd,jdbcType=VARCHAR},
+      </if>
+      <if test="smsYn != null" >
+        #{smsYn,jdbcType=VARCHAR},
+      </if>
+      <if test="smsMsgConts != null" >
+        #{smsMsgConts,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="hello.mybatis.model.LOG003LExample" resultType="java.lang.Integer" >
+    select count(*) from TB_TLOG003L
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update TB_TLOG003L
+    <set >
+      <if test="record.workDay != null" >
+        WORK_DAY = #{record.workDay,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pgmNm != null" >
+        PGM_NM = #{record.pgmNm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.errConts != null" >
+        ERR_CONTS = #{record.errConts,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deftGbnCd != null" >
+        DEFT_GBN_CD = #{record.deftGbnCd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.smsYn != null" >
+        SMS_YN = #{record.smsYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.smsMsgConts != null" >
+        SMS_MSG_CONTS = #{record.smsMsgConts,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update TB_TLOG003L
+    set WORK_DAY = #{record.workDay,jdbcType=VARCHAR},
+      PGM_NM = #{record.pgmNm,jdbcType=VARCHAR},
+      ERR_CONTS = #{record.errConts,jdbcType=VARCHAR},
+      DEFT_GBN_CD = #{record.deftGbnCd,jdbcType=VARCHAR},
+      SMS_YN = #{record.smsYn,jdbcType=VARCHAR},
+      SMS_MSG_CONTS = #{record.smsMsgConts,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="hello.mybatis.model.LOG003L" >
+    update TB_TLOG003L
+    <set >
+      <if test="pgmNm != null" >
+        PGM_NM = #{pgmNm,jdbcType=VARCHAR},
+      </if>
+      <if test="errConts != null" >
+        ERR_CONTS = #{errConts,jdbcType=VARCHAR},
+      </if>
+      <if test="deftGbnCd != null" >
+        DEFT_GBN_CD = #{deftGbnCd,jdbcType=VARCHAR},
+      </if>
+      <if test="smsYn != null" >
+        SMS_YN = #{smsYn,jdbcType=VARCHAR},
+      </if>
+      <if test="smsMsgConts != null" >
+        SMS_MSG_CONTS = #{smsMsgConts,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="hello.mybatis.model.LOG003L" >
+    update TB_TLOG003L
+    set PGM_NM = #{pgmNm,jdbcType=VARCHAR},
+      ERR_CONTS = #{errConts,jdbcType=VARCHAR},
+      DEFT_GBN_CD = #{deftGbnCd,jdbcType=VARCHAR},
+      SMS_YN = #{smsYn,jdbcType=VARCHAR},
+      SMS_MSG_CONTS = #{smsMsgConts,jdbcType=VARCHAR}
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+  </update>
+</mapper>

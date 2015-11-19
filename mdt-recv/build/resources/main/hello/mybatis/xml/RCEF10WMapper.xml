@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hello.mybatis.mapper.RCEF10WMapper" >
+  <resultMap id="BaseResultMap" type="hello.mybatis.model.RCEF10W" >
+    <constructor >
+      <idArg column="WORK_DAY" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <idArg column="MDT_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <idArg column="CARR_FREQ_SEQ" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="ARFCN_VAL" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="NCELL_CNT" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    WORK_DAY, MDT_ID, CARR_FREQ_SEQ, ARFCN_VAL, NCELL_CNT
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="hello.mybatis.model.RCEF10WExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_TRCEF10Y
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_TRCEF10Y
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+      and MDT_ID = #{mdtId,jdbcType=VARCHAR}
+      and CARR_FREQ_SEQ = #{carrFreqSeq,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from TB_TRCEF10Y
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+      and MDT_ID = #{mdtId,jdbcType=VARCHAR}
+      and CARR_FREQ_SEQ = #{carrFreqSeq,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="hello.mybatis.model.RCEF10WExample" >
+    delete from TB_TRCEF10Y
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="hello.mybatis.model.RCEF10W" >
+    insert into TB_TRCEF10Y (WORK_DAY, MDT_ID, CARR_FREQ_SEQ, 
+      ARFCN_VAL, NCELL_CNT)
+    values (#{workDay,jdbcType=VARCHAR}, #{mdtId,jdbcType=VARCHAR}, #{carrFreqSeq,jdbcType=DECIMAL}, 
+      #{arfcnVal,jdbcType=DECIMAL}, #{ncellCnt,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="hello.mybatis.model.RCEF10W" >
+    insert into TB_TRCEF10Y
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="workDay != null" >
+        WORK_DAY,
+      </if>
+      <if test="mdtId != null" >
+        MDT_ID,
+      </if>
+      <if test="carrFreqSeq != null" >
+        CARR_FREQ_SEQ,
+      </if>
+      <if test="arfcnVal != null" >
+        ARFCN_VAL,
+      </if>
+      <if test="ncellCnt != null" >
+        NCELL_CNT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="workDay != null" >
+        #{workDay,jdbcType=VARCHAR},
+      </if>
+      <if test="mdtId != null" >
+        #{mdtId,jdbcType=VARCHAR},
+      </if>
+      <if test="carrFreqSeq != null" >
+        #{carrFreqSeq,jdbcType=DECIMAL},
+      </if>
+      <if test="arfcnVal != null" >
+        #{arfcnVal,jdbcType=DECIMAL},
+      </if>
+      <if test="ncellCnt != null" >
+        #{ncellCnt,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="hello.mybatis.model.RCEF10WExample" resultType="java.lang.Integer" >
+    select count(*) from TB_TRCEF10Y
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update TB_TRCEF10Y
+    <set >
+      <if test="record.workDay != null" >
+        WORK_DAY = #{record.workDay,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mdtId != null" >
+        MDT_ID = #{record.mdtId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carrFreqSeq != null" >
+        CARR_FREQ_SEQ = #{record.carrFreqSeq,jdbcType=DECIMAL},
+      </if>
+      <if test="record.arfcnVal != null" >
+        ARFCN_VAL = #{record.arfcnVal,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ncellCnt != null" >
+        NCELL_CNT = #{record.ncellCnt,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update TB_TRCEF10Y
+    set WORK_DAY = #{record.workDay,jdbcType=VARCHAR},
+      MDT_ID = #{record.mdtId,jdbcType=VARCHAR},
+      CARR_FREQ_SEQ = #{record.carrFreqSeq,jdbcType=DECIMAL},
+      ARFCN_VAL = #{record.arfcnVal,jdbcType=DECIMAL},
+      NCELL_CNT = #{record.ncellCnt,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="hello.mybatis.model.RCEF10W" >
+    update TB_TRCEF10Y
+    <set >
+      <if test="arfcnVal != null" >
+        ARFCN_VAL = #{arfcnVal,jdbcType=DECIMAL},
+      </if>
+      <if test="ncellCnt != null" >
+        NCELL_CNT = #{ncellCnt,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+      and MDT_ID = #{mdtId,jdbcType=VARCHAR}
+      and CARR_FREQ_SEQ = #{carrFreqSeq,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="hello.mybatis.model.RCEF10W" >
+    update TB_TRCEF10Y
+    set ARFCN_VAL = #{arfcnVal,jdbcType=DECIMAL},
+      NCELL_CNT = #{ncellCnt,jdbcType=DECIMAL}
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+      and MDT_ID = #{mdtId,jdbcType=VARCHAR}
+      and CARR_FREQ_SEQ = #{carrFreqSeq,jdbcType=DECIMAL}
+  </update>
+</mapper>

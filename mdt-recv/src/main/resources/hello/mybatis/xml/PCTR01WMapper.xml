@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hello.mybatis.mapper.PCTR01WMapper" >
+  <resultMap id="BaseResultMap" type="hello.mybatis.model.PCTR01W" >
+    <constructor >
+      <idArg column="WORK_DAY" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <idArg column="MDT_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ENB_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CELL_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CAL_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="MEAS_TMST" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="MME_ASGN_UE_S1AP_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ENB_ASGN_UE_S1AP_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="TRSR_VAL" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="TRC_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    WORK_DAY, MDT_ID, ENB_ID, CELL_ID, CAL_ID, MEAS_TMST, MME_ASGN_UE_S1AP_ID, ENB_ASGN_UE_S1AP_ID, 
+    TRSR_VAL, TRC_ID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="hello.mybatis.model.PCTR01WExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_TPCTR01Y
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_TPCTR01Y
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+      and MDT_ID = #{mdtId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from TB_TPCTR01Y
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+      and MDT_ID = #{mdtId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="hello.mybatis.model.PCTR01WExample" >
+    delete from TB_TPCTR01Y
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="hello.mybatis.model.PCTR01W" >
+    insert into TB_TPCTR01Y (WORK_DAY, MDT_ID, ENB_ID, 
+      CELL_ID, CAL_ID, MEAS_TMST, 
+      MME_ASGN_UE_S1AP_ID, ENB_ASGN_UE_S1AP_ID, TRSR_VAL, 
+      TRC_ID)
+    values (#{workDay,jdbcType=VARCHAR}, #{mdtId,jdbcType=VARCHAR}, #{enbId,jdbcType=VARCHAR}, 
+      #{cellId,jdbcType=VARCHAR}, #{calId,jdbcType=VARCHAR}, #{measTmst,jdbcType=VARCHAR}, 
+      #{mmeAsgnUeS1apId,jdbcType=VARCHAR}, #{enbAsgnUeS1apId,jdbcType=VARCHAR}, #{trsrVal,jdbcType=DECIMAL}, 
+      #{trcId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="hello.mybatis.model.PCTR01W" >
+    insert into TB_TPCTR01Y
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="workDay != null" >
+        WORK_DAY,
+      </if>
+      <if test="mdtId != null" >
+        MDT_ID,
+      </if>
+      <if test="enbId != null" >
+        ENB_ID,
+      </if>
+      <if test="cellId != null" >
+        CELL_ID,
+      </if>
+      <if test="calId != null" >
+        CAL_ID,
+      </if>
+      <if test="measTmst != null" >
+        MEAS_TMST,
+      </if>
+      <if test="mmeAsgnUeS1apId != null" >
+        MME_ASGN_UE_S1AP_ID,
+      </if>
+      <if test="enbAsgnUeS1apId != null" >
+        ENB_ASGN_UE_S1AP_ID,
+      </if>
+      <if test="trsrVal != null" >
+        TRSR_VAL,
+      </if>
+      <if test="trcId != null" >
+        TRC_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="workDay != null" >
+        #{workDay,jdbcType=VARCHAR},
+      </if>
+      <if test="mdtId != null" >
+        #{mdtId,jdbcType=VARCHAR},
+      </if>
+      <if test="enbId != null" >
+        #{enbId,jdbcType=VARCHAR},
+      </if>
+      <if test="cellId != null" >
+        #{cellId,jdbcType=VARCHAR},
+      </if>
+      <if test="calId != null" >
+        #{calId,jdbcType=VARCHAR},
+      </if>
+      <if test="measTmst != null" >
+        #{measTmst,jdbcType=VARCHAR},
+      </if>
+      <if test="mmeAsgnUeS1apId != null" >
+        #{mmeAsgnUeS1apId,jdbcType=VARCHAR},
+      </if>
+      <if test="enbAsgnUeS1apId != null" >
+        #{enbAsgnUeS1apId,jdbcType=VARCHAR},
+      </if>
+      <if test="trsrVal != null" >
+        #{trsrVal,jdbcType=DECIMAL},
+      </if>
+      <if test="trcId != null" >
+        #{trcId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="hello.mybatis.model.PCTR01WExample" resultType="java.lang.Integer" >
+    select count(*) from TB_TPCTR01Y
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update TB_TPCTR01Y
+    <set >
+      <if test="record.workDay != null" >
+        WORK_DAY = #{record.workDay,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mdtId != null" >
+        MDT_ID = #{record.mdtId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enbId != null" >
+        ENB_ID = #{record.enbId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cellId != null" >
+        CELL_ID = #{record.cellId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.calId != null" >
+        CAL_ID = #{record.calId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.measTmst != null" >
+        MEAS_TMST = #{record.measTmst,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mmeAsgnUeS1apId != null" >
+        MME_ASGN_UE_S1AP_ID = #{record.mmeAsgnUeS1apId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enbAsgnUeS1apId != null" >
+        ENB_ASGN_UE_S1AP_ID = #{record.enbAsgnUeS1apId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trsrVal != null" >
+        TRSR_VAL = #{record.trsrVal,jdbcType=DECIMAL},
+      </if>
+      <if test="record.trcId != null" >
+        TRC_ID = #{record.trcId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update TB_TPCTR01Y
+    set WORK_DAY = #{record.workDay,jdbcType=VARCHAR},
+      MDT_ID = #{record.mdtId,jdbcType=VARCHAR},
+      ENB_ID = #{record.enbId,jdbcType=VARCHAR},
+      CELL_ID = #{record.cellId,jdbcType=VARCHAR},
+      CAL_ID = #{record.calId,jdbcType=VARCHAR},
+      MEAS_TMST = #{record.measTmst,jdbcType=VARCHAR},
+      MME_ASGN_UE_S1AP_ID = #{record.mmeAsgnUeS1apId,jdbcType=VARCHAR},
+      ENB_ASGN_UE_S1AP_ID = #{record.enbAsgnUeS1apId,jdbcType=VARCHAR},
+      TRSR_VAL = #{record.trsrVal,jdbcType=DECIMAL},
+      TRC_ID = #{record.trcId,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="hello.mybatis.model.PCTR01W" >
+    update TB_TPCTR01Y
+    <set >
+      <if test="enbId != null" >
+        ENB_ID = #{enbId,jdbcType=VARCHAR},
+      </if>
+      <if test="cellId != null" >
+        CELL_ID = #{cellId,jdbcType=VARCHAR},
+      </if>
+      <if test="calId != null" >
+        CAL_ID = #{calId,jdbcType=VARCHAR},
+      </if>
+      <if test="measTmst != null" >
+        MEAS_TMST = #{measTmst,jdbcType=VARCHAR},
+      </if>
+      <if test="mmeAsgnUeS1apId != null" >
+        MME_ASGN_UE_S1AP_ID = #{mmeAsgnUeS1apId,jdbcType=VARCHAR},
+      </if>
+      <if test="enbAsgnUeS1apId != null" >
+        ENB_ASGN_UE_S1AP_ID = #{enbAsgnUeS1apId,jdbcType=VARCHAR},
+      </if>
+      <if test="trsrVal != null" >
+        TRSR_VAL = #{trsrVal,jdbcType=DECIMAL},
+      </if>
+      <if test="trcId != null" >
+        TRC_ID = #{trcId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+      and MDT_ID = #{mdtId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="hello.mybatis.model.PCTR01W" >
+    update TB_TPCTR01Y
+    set ENB_ID = #{enbId,jdbcType=VARCHAR},
+      CELL_ID = #{cellId,jdbcType=VARCHAR},
+      CAL_ID = #{calId,jdbcType=VARCHAR},
+      MEAS_TMST = #{measTmst,jdbcType=VARCHAR},
+      MME_ASGN_UE_S1AP_ID = #{mmeAsgnUeS1apId,jdbcType=VARCHAR},
+      ENB_ASGN_UE_S1AP_ID = #{enbAsgnUeS1apId,jdbcType=VARCHAR},
+      TRSR_VAL = #{trsrVal,jdbcType=DECIMAL},
+      TRC_ID = #{trcId,jdbcType=VARCHAR}
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+      and MDT_ID = #{mdtId,jdbcType=VARCHAR}
+  </update>
+</mapper>

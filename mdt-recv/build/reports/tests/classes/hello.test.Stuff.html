@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class hello.test.Stuff</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class hello.test.Stuff</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/hello.test.html">hello.test</a> &gt; Stuff</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">8</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">1</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.593s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox failures" id="successRate">
+<div class="percent">87%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Failed tests</a>
+</li>
+<li>
+<a href="#tab1">Tests</a>
+</li>
+<li>
+<a href="#tab2">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="test2"></a>
+<h3 class="failures">test2</h3>
+<span class="code">
+<pre>java.lang.IllegalArgumentException: Parameter 'directory' is not a directory
+	at org.apache.commons.io.FileUtils.validateListFilesParameters(FileUtils.java:545)
+	at org.apache.commons.io.FileUtils.listFilesAndDirs(FileUtils.java:593)
+	at hello.test.Stuff.test2(Stuff.java:46)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.runTestClass(JUnitTestClassExecuter.java:86)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.execute(JUnitTestClassExecuter.java:49)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:69)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:48)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.messaging.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.messaging.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:105)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.messaging.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:360)
+	at org.gradle.internal.concurrent.DefaultExecutorFactory$StoppableExecutorImpl$1.run(DefaultExecutorFactory.java:64)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">nanotime</td>
+<td>0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">test1</td>
+<td>0.031s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="failures">test2</td>
+<td>0.016s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="success">test3</td>
+<td>0.016s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">test4</td>
+<td>0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">test5</td>
+<td>0.296s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">test6</td>
+<td>0.172s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">workday</td>
+<td>0.062s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>14:51:00.291 [Test worker] INFO  hello.test.Stuff - backupFile:C:\mdt\data\load_backup\TS\1303_M00_201510161255.dat
+14:51:00.322 [Test worker] INFO  hello.test.Stuff - backupFile:C:\mdt\data\load_backup\TS\1303_M00_201510161255.dat is not existed
+14:51:00.338 [Test worker] INFO  hello.test.Stuff - c:\mdt\data\load\DD
+14:51:00.354 [Test worker] INFO  hello.test.Stuff - c:\mdt\data\load_backup\DD
+14:51:00.354 [Test worker] INFO  hello.test.Stuff - 암호화
+14:51:00.354 [Test worker] INFO  hello.test.Stuff - key:ahqkdlfwlvy01
+14:51:00.650 [Test worker] INFO  hello.test.Stuff - Encoded key:b9c7ba8e9378df92423d0b4d8ff5cfff
+14:51:00.650 [Test worker] INFO  hello.test.Stuff - Decoded key:ahqkdlfwlvy01
+14:51:00.822 [Test worker] INFO  hello.test.Stuff - ==========================================================================
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100822851,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100838235,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100840750,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100842048,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100844029,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100846264,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100848501,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100850001,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100852634,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100854402,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100856028,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100858055,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100860962,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100862338,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100864251,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100866028,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100868120,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100870928,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100872567,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100874364,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100876675,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100878749,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100880102,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100882520,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100884010,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100886638,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100888973,length=20
+14:51:00.837 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100890236,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100892746,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100894682,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100896097,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100898076,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100900372,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100902439,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100904797,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100906918,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100908481,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100910865,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100912951,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100914219,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100916774,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100918712,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100920308,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100922140,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100924211,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100926432,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100928588,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100930702,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100932234,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100934742,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100936903,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100938231,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100940058,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100942972,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100944681,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100946700,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100948757,length=20
+14:51:00.853 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100950795,length=20
+14:51:00.868 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100952638,length=20
+14:51:00.868 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100954051,length=20
+14:51:00.868 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100956413,length=20
+14:51:00.868 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100958594,length=20
+14:51:00.868 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100960272,length=20
+14:51:00.868 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100962700,length=20
+14:51:00.868 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100964891,length=20
+14:51:00.868 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100966839,length=20
+14:51:00.868 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100968342,length=20
+14:51:00.868 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100970237,length=20
+14:51:00.868 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100972514,length=20
+14:51:00.868 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100974117,length=20
+14:51:00.868 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100976425,length=20
+14:51:00.868 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100978186,length=20
+14:51:00.868 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100980215,length=20
+14:51:00.868 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100982975,length=20
+14:51:00.868 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100984167,length=20
+14:51:00.868 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100986072,length=20
+14:51:00.868 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100988980,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100990491,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100992790,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100994292,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100996485,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145100998234,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145101000271,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145101002578,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145101004670,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145101006673,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145101008746,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145101010892,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145101012035,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145101014256,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145101016694,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145101018861,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145101020616,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145101022174,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145101024859,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145101026848,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145101028089,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145101030957,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145101032125,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff -  Event.workDay():20151119145101034604,length=20
+14:51:00.884 [Test worker] INFO  hello.test.Stuff - ==========================================================================
+14:51:00.884 [Test worker] INFO  hello.test.Stuff - CZ
+14:51:00.884 [Test worker] INFO  hello.test.Stuff - TSS14
+14:51:00.884 [Test worker] INFO  hello.test.Stuff - 201511031030
+14:51:00.884 [Test worker] INFO  hello.test.Stuff - 30
+14:51:00.884 [Test worker] INFO  hello.test.Stuff - 1308_M00_CZTSS14_201511031030.FIN
+14:51:00.884 [Test worker] INFO  hello.test.Stuff - gap:0
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>Generated by 
+<a href="http://www.gradle.org">Gradle 2.2.1</a> at 2015. 11. 19 오후 2:51:00</p>
+</div>
+</div>
+</body>

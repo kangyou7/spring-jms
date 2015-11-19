@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hello.mybatis.mapper.LOG002LMapper" >
+  <resultMap id="BaseResultMap" type="hello.mybatis.model.LOG002L" >
+    <constructor >
+      <idArg column="WORK_DAY" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <idArg column="FILE_NM" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="MDAY" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="OMC_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="NE_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="READ_ROW_CNT" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="INSRT_SUC_CNT" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="INSRT_FAIL_CNT" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="PRCS_PSG_TIME_VAL" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    WORK_DAY, FILE_NM, MDAY, OMC_ID, NE_ID, READ_ROW_CNT, INSRT_SUC_CNT, INSRT_FAIL_CNT, 
+    PRCS_PSG_TIME_VAL
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="hello.mybatis.model.LOG002LExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_TLOG002L
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_TLOG002L
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+      and FILE_NM = #{fileNm,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from TB_TLOG002L
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+      and FILE_NM = #{fileNm,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="hello.mybatis.model.LOG002LExample" >
+    delete from TB_TLOG002L
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="hello.mybatis.model.LOG002L" >
+    insert into TB_TLOG002L (WORK_DAY, FILE_NM, MDAY, 
+      OMC_ID, NE_ID, READ_ROW_CNT, 
+      INSRT_SUC_CNT, INSRT_FAIL_CNT, PRCS_PSG_TIME_VAL
+      )
+    values (#{workDay,jdbcType=VARCHAR}, #{fileNm,jdbcType=VARCHAR}, #{mday,jdbcType=VARCHAR}, 
+      #{omcId,jdbcType=VARCHAR}, #{neId,jdbcType=VARCHAR}, #{readRowCnt,jdbcType=DECIMAL}, 
+      #{insrtSucCnt,jdbcType=DECIMAL}, #{insrtFailCnt,jdbcType=DECIMAL}, #{prcsPsgTimeVal,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="hello.mybatis.model.LOG002L" >
+    insert into TB_TLOG002L
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="workDay != null" >
+        WORK_DAY,
+      </if>
+      <if test="fileNm != null" >
+        FILE_NM,
+      </if>
+      <if test="mday != null" >
+        MDAY,
+      </if>
+      <if test="omcId != null" >
+        OMC_ID,
+      </if>
+      <if test="neId != null" >
+        NE_ID,
+      </if>
+      <if test="readRowCnt != null" >
+        READ_ROW_CNT,
+      </if>
+      <if test="insrtSucCnt != null" >
+        INSRT_SUC_CNT,
+      </if>
+      <if test="insrtFailCnt != null" >
+        INSRT_FAIL_CNT,
+      </if>
+      <if test="prcsPsgTimeVal != null" >
+        PRCS_PSG_TIME_VAL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="workDay != null" >
+        #{workDay,jdbcType=VARCHAR},
+      </if>
+      <if test="fileNm != null" >
+        #{fileNm,jdbcType=VARCHAR},
+      </if>
+      <if test="mday != null" >
+        #{mday,jdbcType=VARCHAR},
+      </if>
+      <if test="omcId != null" >
+        #{omcId,jdbcType=VARCHAR},
+      </if>
+      <if test="neId != null" >
+        #{neId,jdbcType=VARCHAR},
+      </if>
+      <if test="readRowCnt != null" >
+        #{readRowCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="insrtSucCnt != null" >
+        #{insrtSucCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="insrtFailCnt != null" >
+        #{insrtFailCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="prcsPsgTimeVal != null" >
+        #{prcsPsgTimeVal,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="hello.mybatis.model.LOG002LExample" resultType="java.lang.Integer" >
+    select count(*) from TB_TLOG002L
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update TB_TLOG002L
+    <set >
+      <if test="record.workDay != null" >
+        WORK_DAY = #{record.workDay,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileNm != null" >
+        FILE_NM = #{record.fileNm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mday != null" >
+        MDAY = #{record.mday,jdbcType=VARCHAR},
+      </if>
+      <if test="record.omcId != null" >
+        OMC_ID = #{record.omcId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.neId != null" >
+        NE_ID = #{record.neId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.readRowCnt != null" >
+        READ_ROW_CNT = #{record.readRowCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.insrtSucCnt != null" >
+        INSRT_SUC_CNT = #{record.insrtSucCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.insrtFailCnt != null" >
+        INSRT_FAIL_CNT = #{record.insrtFailCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.prcsPsgTimeVal != null" >
+        PRCS_PSG_TIME_VAL = #{record.prcsPsgTimeVal,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update TB_TLOG002L
+    set WORK_DAY = #{record.workDay,jdbcType=VARCHAR},
+      FILE_NM = #{record.fileNm,jdbcType=VARCHAR},
+      MDAY = #{record.mday,jdbcType=VARCHAR},
+      OMC_ID = #{record.omcId,jdbcType=VARCHAR},
+      NE_ID = #{record.neId,jdbcType=VARCHAR},
+      READ_ROW_CNT = #{record.readRowCnt,jdbcType=DECIMAL},
+      INSRT_SUC_CNT = #{record.insrtSucCnt,jdbcType=DECIMAL},
+      INSRT_FAIL_CNT = #{record.insrtFailCnt,jdbcType=DECIMAL},
+      PRCS_PSG_TIME_VAL = #{record.prcsPsgTimeVal,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="hello.mybatis.model.LOG002L" >
+    update TB_TLOG002L
+    <set >
+      <if test="mday != null" >
+        MDAY = #{mday,jdbcType=VARCHAR},
+      </if>
+      <if test="omcId != null" >
+        OMC_ID = #{omcId,jdbcType=VARCHAR},
+      </if>
+      <if test="neId != null" >
+        NE_ID = #{neId,jdbcType=VARCHAR},
+      </if>
+      <if test="readRowCnt != null" >
+        READ_ROW_CNT = #{readRowCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="insrtSucCnt != null" >
+        INSRT_SUC_CNT = #{insrtSucCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="insrtFailCnt != null" >
+        INSRT_FAIL_CNT = #{insrtFailCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="prcsPsgTimeVal != null" >
+        PRCS_PSG_TIME_VAL = #{prcsPsgTimeVal,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+      and FILE_NM = #{fileNm,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="hello.mybatis.model.LOG002L" >
+    update TB_TLOG002L
+    set MDAY = #{mday,jdbcType=VARCHAR},
+      OMC_ID = #{omcId,jdbcType=VARCHAR},
+      NE_ID = #{neId,jdbcType=VARCHAR},
+      READ_ROW_CNT = #{readRowCnt,jdbcType=DECIMAL},
+      INSRT_SUC_CNT = #{insrtSucCnt,jdbcType=DECIMAL},
+      INSRT_FAIL_CNT = #{insrtFailCnt,jdbcType=DECIMAL},
+      PRCS_PSG_TIME_VAL = #{prcsPsgTimeVal,jdbcType=VARCHAR}
+    where WORK_DAY = #{workDay,jdbcType=VARCHAR}
+      and FILE_NM = #{fileNm,jdbcType=VARCHAR}
+  </update>
+</mapper>
